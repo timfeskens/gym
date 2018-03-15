@@ -1,0 +1,33 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+
+    &__block {
+        width: calc(100% - 20px);
+        height: 32%;
+        margin: 5px 10px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &--training {
+            background-color: $blue;
+        }
+
+        &--profile {
+            background-color: $red;
+        }
+
+        &--stats {
+            background-color: $green;
+        }
+    }
+
+    &__icon {
+        font-size: 5rem !important;
+        color: $white;
+    }
+}
