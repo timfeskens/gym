@@ -12,17 +12,30 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		cursor: pointer;
 
 		&--training {
 			background-color: $blue;
+
+			&:active, &:hover {
+				background-color: $blue--darker;
+			}
 		}
 
 		&--profile {
 			background-color: $red;
+
+			&:active, &:hover {
+				background-color: $red--darker;
+			}
 		}
 
 		&--stats {
 			background-color: $green;
+
+			&:active, &:hover {
+				background-color: $green--darker;
+			}
 		}
 	}
 
