@@ -1,9 +1,14 @@
 <?php
-require 'require_session.php';
+require 'require_session.php'; 
 
-$query = "SELECT * FROM bodyparts";
+$bodypart_id = $_GET['id'];
+
+$query = "SELECT * FROM exercises WHERE bodypart_id = '$bodypart_id'";
 $result = mysqli_query($mysqli, $query);
 
+while ($row = mysqli_fetch_array($result)) {
+	echo $row['name'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,18 +20,8 @@ $result = mysqli_query($mysqli, $query);
 	<title>Index</title>
 </head>
 <body>
-	<div class="training">
-	<?php 
-		while ($row = mysqli_fetch_array($result)) {
-	?>
-		<a href="exercises.php?id=<?= $row['id']; ?>" class="training__block">
-			<div class="training__title">
-				<?= $row['name']; ?>
-			</div>
-		</a>
-	<?php
-		}
-	?>
+	<div class="exercises">
+
 	</div>
 </body>
 </html>
