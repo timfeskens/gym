@@ -1,3 +1,4 @@
+<?php require 'require_session.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

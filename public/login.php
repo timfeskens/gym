@@ -14,9 +14,9 @@
 				<i class="material-icons login__icon">perm_identity</i>
 			</div>
 		</div>
-		<form action="" method="post" class="login__block login__block--inputs">
-			<input type="email" class="login__input" placeholder="Email" required>
-			<input type="password" class="login__input" placeholder="Password"  required>
+		<form action="login_send.php" method="post" class="login__block login__block--inputs">
+			<input type="email" name="email" class="login__input" placeholder="Email" required>
+			<input type="password" name="password" class="login__input" placeholder="Password" required>
 			<button type="submit" class="login__input login__input--button">Log in</button>
 		</form>
 	</div>
