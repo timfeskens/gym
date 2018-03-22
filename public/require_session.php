@@ -22,7 +22,6 @@ if (isset($_SESSION['username']) && isset($_SESSION['login_string'])) {
 
 		// Get the user-agent string of the user.
 		$user_browser = $_SERVER['HTTP_USER_AGENT'];
-		session_start();
 		$string = hash('sha512', $db_password . $user_browser);
 		
 		if ( $string !== $_SESSION['login_string']) {

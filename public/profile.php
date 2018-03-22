@@ -1,3 +1,8 @@
+<?php 
+	require 'require_session.php'; 
+	$result = mysqli_query($mysqli, "SELECT * FROM profiles");
+	$row = mysqli_fetch_array($result);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,22 +21,32 @@
 		<div class="profile__info">
 			<div class="profile__block">
 				<div class="block__title">
-					OS
+					<?php
+					$firstname = $row['first_name'];
+					$lastname = $row['last_name'];
+
+					$firstnameLength = strlen($firstname);
+					$lastnameLength = strlen($lastname);
+
+					$firstname = substr($firstname, 0, 1 - $firstnameLength);
+					$lastname = substr($lastname, 0, 1 - $lastnameLength);
+					echo $firstname .' '. $lastname;
+					?>
 				</div>
 			</div>
 			<div class="profile__block">
 				<div class="block__title">
-					20
+					<?= $row['age'] ?>
 				</div>
 			</div>
 			<div class="profile__block">
 				<div class="block__title">
-					79KG
+					<?= $row['weight'] ?>KG
 				</div>
 			</div>
 			<div class="profile__block">
 				<div class="block__title">
-					187CM
+					<?= $row['length'] ?>CM
 				</div>
 			</div>
 		</div>
