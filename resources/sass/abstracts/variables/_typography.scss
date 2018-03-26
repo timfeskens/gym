@@ -14,4 +14,12 @@ input {
 
 a {
 	text-decoration: none;
+	color: $white;
+}
+
+button {
+	padding: 0;
+	border: none;
+	background-color: inherit;
+	outline: inherit;
 }

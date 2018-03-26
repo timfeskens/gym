@@ -4,9 +4,14 @@
 // Import variables
 @import 'abstracts/variables';
 
+// Import components
+@import 'abstracts/components';
+
 // Import pages
 @import 'pages/index';
 @import 'pages/login';
 @import 'pages/training';
 @import 'pages/profile';
+@import 'pages/stats';
 @import 'pages/exercises';
+@import 'pages/addexercise';

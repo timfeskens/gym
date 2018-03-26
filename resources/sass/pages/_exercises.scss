@@ -1,8 +1,12 @@
 .exercises {
 	display: flex;
 	flex-direction: column;
-	height: 100%;
-	width: 100%;
+	height: calc(100% - 10px);
+	width: calc(100% - 10px);
+	background-color: $blue;
+	border-radius: 5px;
+	margin: 5px;
+	overflow: scroll;
 
 	&__block {
 		width: calc(100% - 40px);
@@ -14,35 +18,13 @@
 		justify-content: space-between;
 		align-items: center;
 		cursor: pointer;
-		background-color: $green;
-
-		&:active, &:hover {
-			background-color: $green--darker;
-		}
-
-		&:nth-of-type(3n+1)
-		{
-			background-color: $red;
-
-			&:active, &:hover {
-				background-color: $red--darker;
-			}
-		}
-
-		&:nth-of-type(3n+2)
-		{
-			background-color: $blue;
-
-			&:active, &:hover {
-				background-color: $blue--darker;
-			}
-		}
+		background-color: $white;
 	}
 
 	&__content {
 		display: none;
-		background-color: $green--darkest;
-		color: $white;
+		background-color: $white;
+		color: $blue;
 		width: calc(100% - 40px);
 		margin: 5px 10px;
 		min-height: 30px;
@@ -51,16 +33,6 @@
 		z-index: 1;
 		flex-direction: row;
 		justify-content: space-between;
-
-		&:nth-of-type(3n+2)
-		{
-			background-color: $red--darkest;
-		}
-
-		&:nth-of-type(3n+3)
-		{
-			background-color: $blue--darkest;
-		}
 	}
 
 	&__set-column {
@@ -68,6 +40,7 @@
 		font-weight: $light;
 		display: flex;
 		flex-direction: column;
+		justify-content: center;
 	}
 
 	&__set-row {
@@ -78,7 +51,7 @@
 	}
 
 	&__set-number {
-		border: 1px solid $white;
+		border: 1px solid $blue;
 		text-align: center;
 		width: 2rem;
 		margin: 0 5px;
@@ -86,13 +59,13 @@
 
 	&__title {
 		font-size: 1.6rem;
-		color: $white;
+		color: $blue;
 		font-weight: $light;
 		text-transform: uppercase;
 	}
 
 	&__icon {
-		color: $white;
+		color: $blue;
 		font-size: 2.5rem;
 
 		&--edit {
@@ -102,7 +75,7 @@
 
 		&--add {
 			font-size: 4rem;
-			color: $green;
+			color: $white;
 		}
 	}
 
@@ -110,6 +83,5 @@
 		position: fixed;
 		right: 5px;
 		bottom: 0;
-		color: $red;
 	}
 }
