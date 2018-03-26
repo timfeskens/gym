@@ -17,6 +17,17 @@ $result = mysqli_query($mysqli, "SELECT * FROM exercises WHERE bodypart_id = '$b
 </head>
 <body>
 	<div class="exercises">
+	<div class="page__head">
+		<a href="training.php">
+			<i class="material-icons page__icon">chevron_left</i>
+		</a>
+		<div class="page__title">
+			exercises
+		</div>
+		<a href="logout.php">
+			<i class="material-icons page__icon">exit_to_app</i>
+		</a>
+	</div>
 		<?php while ($row = mysqli_fetch_array($result)) { ?>
 		<div class="exercises__block">
 			<div class="exercises__title">
@@ -28,22 +39,38 @@ $result = mysqli_query($mysqli, "SELECT * FROM exercises WHERE bodypart_id = '$b
 				<div class="exercises__set-column">
 					<?php 
 						$exerciseID = $row['id'];
-						$exerciseResult = mysqli_query($mysqli, "SELECT * FROM user_exercises WHERE exercise_id = '$exerciseID' AND user_id = '1'");
+						$exerciseResult = mysqli_query($mysqli, "SELECT * FROM user_exercises WHERE exercise_id = '$exerciseID' AND user_id = '$userID'");
 
-						while ($rows = mysqli_fetch_array($exerciseResult)) {
-							$setID = $rows['set_id'];
-							$setsResult = mysqli_query($mysqli, "SELECT * FROM sets WHERE id = '$setID'");
-
-							$row = mysqli_fetch_array($setsResult);
-							?>
+						if (!$exerciseResult) {
+						?>
 							<div class="exercises__set-row">
-								<div class="exercises__set-number">
-									<?= $row['set_number'] ?>
-								</div> 
-								<?= $row['reps'] . 'x' . $row['weight'] . '<br>';?>
+								No data saved
 							</div>
-							<?php
-							
+						<?php
+						}
+						else {
+							while ($rows = mysqli_fetch_array($exerciseResult)) {
+								$setID = $rows['set_id'];
+								$setsResult = mysqli_query($mysqli, "SELECT * FROM sets WHERE id = '$setID'");
+
+								if (!$setsResult) {
+									?>
+										<div class="exercises__set-row">
+											No data saved
+										</div>
+									<?php
+								} else {
+									$row = mysqli_fetch_array($setsResult);
+									?>
+									<div class="exercises__set-row">
+										<div class="exercises__set-number">
+											<?= $row['set_number'] ?>
+										</div> 
+										<?= $row['reps'] . 'x' . $row['weight'] . '<br>';?>
+									</div>
+									<?php
+								}
+							}
 						}
 					?>
 				</div>
@@ -52,7 +79,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM exercises WHERE bodypart_id = '$b
 				</div>
 			</div>
 		<?php } ?>
-		<a href="excersises_add.php?id=<?= $bodypart_id; ?>" class="exercises__add">
+		<a href="addexercise.php?id=<?= $bodypart_id; ?>" class="exercises__add">
 			<i class="material-icons exercises__icon exercises__icon--add">add_box</i>
 		</a>
 	</div>

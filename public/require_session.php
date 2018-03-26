@@ -1,7 +1,9 @@
 <?php
 
 require_once '../../private/config.inc.php';
-session_start();
+if (!isset($_SESSION)) {
+	session_start();
+}
 
 if (!isset($_SESSION['login_time'])) {
 	$_SESSION['login_time'] = time();
@@ -23,16 +25,17 @@ if (isset($_SESSION['username']) && isset($_SESSION['login_string'])) {
 		// Get the user-agent string of the user.
 		$user_browser = $_SERVER['HTTP_USER_AGENT'];
 		$string = hash('sha512', $db_password . $user_browser);
+		$userID = $_SESSION['user_id'];
 		
 		if ( $string !== $_SESSION['login_string']) {
-			header('Location: login.php');
+			header('Location: login.php?error=session');
 			exit();
 		}
 	} else {
-		header('Location: login.php');
+		header('Location: login.php?error=session');
 		exit();
 	}
 } else {
-	header('Location: login.php');
+	header('Location: login.php?error=session');
 	exit();
 }

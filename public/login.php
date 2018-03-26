@@ -1,3 +1,8 @@
+<?php
+	if (!empty($_GET['error'])) {
+		$error = $_GET['error'];
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +23,21 @@
 			<input type="email" name="email" class="login__input" placeholder="Email" required>
 			<input type="password" name="password" class="login__input" placeholder="Password" required>
 			<button type="submit" class="login__input login__input--button">Log in</button>
+			<?php 
+				if (!empty($_GET['error'])) {
+					echo '<div class="login__error">';
+					if ($error == 'user') {
+						echo 'User does not exist';
+					}
+					if ($error == 'password') {
+						echo 'Wrong password';
+					}
+					if ($error == 'session') {
+						echo 'Session error';
+					}
+					echo '</div>';
+				}
+			?>
 		</form>
 	</div>
 </body>

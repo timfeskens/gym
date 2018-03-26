@@ -51,4 +51,11 @@
 			background-color: $white;
 		}
 	}
+
+	&__error {
+		color: $red;
+		font-size: 1.8rem;
+		font-weight: $light;
+		border-bottom: solid 1px $red;
+	}
 }
