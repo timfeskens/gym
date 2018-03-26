@@ -1,7 +1,7 @@
 <?php
 require 'require_session.php'; 
 
-$bodypart_id = $_GET['id'];
+$bodypart_id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
 
 $result = mysqli_query($mysqli, "SELECT * FROM exercises WHERE bodypart_id = '$bodypart_id'");
 ?>
