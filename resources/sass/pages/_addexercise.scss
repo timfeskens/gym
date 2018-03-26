@@ -7,7 +7,15 @@
 	border-radius: 5px;
 	margin: 5px;
 
-	&__block {
+	&__title {
+		color: $blue;
+		font-size: 1.5rem;
+		font-weight: $light;
+		text-transform: uppercase;
+		margin: 20px 0 0;
+	}
+
+	&__form {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -17,33 +25,22 @@
 		margin: 5px;
 	}
 
-	&__title {
-		color: $blue;
-		font-size: 1.5rem;
-		font-weight: $light;
-		text-transform: uppercase;
-		margin: 10px 0;
-	}
-
-	&__form {
-		width: 90%;
-	}
-
 	&__input {
-		width: calc(100% - 20px);
+		width: calc(100% - 80px);
 		border: 1px solid $blue;
 		font-size: 1.3rem;
 		font-weight: $light;
 		text-transform: uppercase;
 		outline: none;
 		margin: 10px 0;
+		text-align: center;
 	}
 	
 	&__button-holder {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
-		width: 100%;
+		width: calc(100% - 50px);
 		margin: 10px 0;
 	}
 

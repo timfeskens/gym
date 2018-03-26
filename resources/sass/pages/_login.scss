@@ -4,37 +4,38 @@
 	height: calc(100% - 20px);
 	width: calc(100% - 20px);
 	margin: 10px;
-	background-color: $gray;
+	background-color: $gold;
 	border-radius: 5px;
 
 	&__block {
-		height: 50%;
 		margin: 10px;
 		display: flex;
 		justify-content: center;
 		flex-direction: column;
 
+		&--photo {
+			height: 40%;
+		}
+
 		&--inputs {
+			height: 60%;
 			justify-content: flex-start;
 			align-items: center;
 		}
 	}
 
 	&__photo {
-		background-color: $white;
-		background-size: contain;
-		border-radius: 50%;
+		background-image: url('../images/muscle.png');
+		background-repeat: no-repeat;
+		background-size: 170px;
+		background-position: 40px 15px;
+		border-radius: 5px;
 		margin: auto;
-		width: 200px;
+		width: 220px;
 		height: 200px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-	}
-
-	&__icon {
-		font-size: 5rem !important;
-		color: $gray;
 	}
 
 	&__input {
@@ -46,9 +47,12 @@
 	
 		&--button {
 			width: 95%;
+			height: 60px;
 			border: none;
 			margin: 15px auto;
 			background-color: $white;
+			font-weight: $light;
+			text-transform: uppercase;
 		}
 	}
 
