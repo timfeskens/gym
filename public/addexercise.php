@@ -1,6 +1,6 @@
 <?php 
 require 'require_session.php'; 
-$bodypart_id = $_GET['id'];
+$bodypart_id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
 
 $result = mysqli_query($mysqli, "SELECT * FROM exercises WHERE bodypart_id = '$bodypart_id'");
 ?>
@@ -31,8 +31,8 @@ $result = mysqli_query($mysqli, "SELECT * FROM exercises WHERE bodypart_id = '$b
 			<div class="addexercise__title">
 				exercise name
 			</div>
-			<form action="" method="post" class="addexercise__form">
-				<input type="text" class="addexercise__input">
+			<form action="addexercise_send.php?id=<?= $bodypart_id ?>" method="post" class="addexercise__form">
+				<input type="text" name="name" class="addexercise__input">
 				<div class="addexercise__button-holder">
 					<i class="material-icons addexercise__button addexercise__button--cancel">cancel</i>
 					<button type="submit">
