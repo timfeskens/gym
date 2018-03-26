@@ -14,9 +14,8 @@
 </head>
 <body>
 	<div class="login">
-		<div class="login__block">
+		<div class="login__block login__block--photo">
 			<div class="login__photo">
-				<i class="material-icons login__icon">perm_identity</i>
 			</div>
 		</div>
 		<form action="login_send.php" method="post" class="login__block login__block--inputs">

@@ -1,10 +1,10 @@
 <?php 
-require 'require_session.php'; 
-$bodypart_id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
+	require 'require_session.php'; 
+	$bodypart_id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
 
-$result = mysqli_query($mysqli, "SELECT * FROM exercises WHERE bodypart_id = '$bodypart_id'");
+	$result = mysqli_query($mysqli, "SELECT * FROM bodyparts WHERE id = '$bodypart_id'");
+	$row =  mysqli_fetch_array($result);
 ?>
-<?php require 'require_session.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,20 +27,18 @@ $result = mysqli_query($mysqli, "SELECT * FROM exercises WHERE bodypart_id = '$b
 				<i class="material-icons page__icon">exit_to_app</i>
 			</a>
 		</div>
-		<div class="addexercise__block">
-			<div class="addexercise__title">
-				exercise name
+		<form action="addexercise_send.php?id=<?= $bodypart_id ?>" method="post" class="addexercise__form">
+			<div class="addexercise__title">exercise name</div>
+			<input type="text" name="name" class="addexercise__input">
+			<div class="addexercise__title">exercise group</div>
+			<input type="text" class="addexercise__input" value="<?= $row['name']; ?>" readonly>
+			<div class="addexercise__button-holder">
+				<i class="material-icons addexercise__button addexercise__button--cancel">cancel</i>
+				<button type="submit">
+					<i class="material-icons addexercise__button addexercise__button--add">check_circle</i>
+				</button>
 			</div>
-			<form action="addexercise_send.php?id=<?= $bodypart_id ?>" method="post" class="addexercise__form">
-				<input type="text" name="name" class="addexercise__input">
-				<div class="addexercise__button-holder">
-					<i class="material-icons addexercise__button addexercise__button--cancel">cancel</i>
-					<button type="submit">
-						<i class="material-icons addexercise__button addexercise__button--add">check_circle</i>
-					</button>
-				</div>
-			</form>
-		</div>
+		</form>
 	</div>
 </body>
 </html>
