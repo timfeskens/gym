@@ -1,10 +1,5 @@
 <?php 
 require 'require_session.php'; 
-
-// echo '<br>user id is ' . $userID;
-// echo '<br>user name is ' . $_SESSION['username'];
-// echo '<br>user string is '  . $_SESSION['login_string'];
-
 $bodypart_id = $_GET['id'];
 
 $result = mysqli_query($mysqli, "SELECT * FROM exercises WHERE bodypart_id = '$bodypart_id'");
