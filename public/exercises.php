@@ -13,6 +13,8 @@ $result = mysqli_query($mysqli, "SELECT * FROM exercises WHERE bodypart_id = '$b
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<script src="js/preventSafari.js"></script>
 	<title>Index</title>
 </head>
 <body>
@@ -53,30 +55,30 @@ $result = mysqli_query($mysqli, "SELECT * FROM exercises WHERE bodypart_id = '$b
 								$setID = $rows['set_id'];
 								$setsResult = mysqli_query($mysqli, "SELECT * FROM sets WHERE id = '$setID'");
 
-								if (!$setsResult) {
+								if ($result) {
+									$rowResult = mysqli_fetch_array($setsResult);
+									?>
+									<div class="exercises__set-row">
+										<div class="exercises__set-number">
+											<?= $rowResult['set_number'] ?>
+										</div> 
+										<?= $rowResult['reps'] . 'x' . strtoupper($rowResult['weight']) . '<br>';?>
+									</div>
+									<?php
+								} else {
 									?>
 										<div class="exercises__set-row">
 											No data saved
 										</div>
-									<?php
-								} else {
-									$row = mysqli_fetch_array($setsResult);
-									?>
-									<div class="exercises__set-row">
-										<div class="exercises__set-number">
-											<?= $row['set_number'] ?>
-										</div> 
-										<?= $row['reps'] . 'x' . $row['weight'] . '<br>';?>
-									</div>
 									<?php
 								}
 							}
 						}
 					?>
 				</div>
-				<div class="exercises__set-column">
+				<a href="editexercise.php?id=<?= $bodypart_id; ?>&exerciseid=<?= $row['id']; ?>" class="exercises__set-column">
 					<i class="material-icons exercises__icon exercises__icon--edit">mode_edit</i>
-				</div>
+				</a>
 			</div>
 		<?php } ?>
 		<a href="addexercise.php?id=<?= $bodypart_id; ?>" class="exercises__add">

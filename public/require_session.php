@@ -1,5 +1,4 @@
 <?php
-
 require_once '../../private/config.inc.php';
 if (!isset($_SESSION)) {
 	session_start();
@@ -28,14 +27,14 @@ if (isset($_SESSION['username']) && isset($_SESSION['login_string'])) {
 		$userID = $_SESSION['user_id'];
 		
 		if ( $string !== $_SESSION['login_string']) {
-			header('Location: login.php?error=session');
+			header('Location: login.php');
 			exit();
 		}
 	} else {
-		header('Location: login.php?error=session');
+		header('Location: login.php');
 		exit();
 	}
 } else {
-	header('Location: login.php?error=session');
+	header('Location: login.php');
 	exit();
 }

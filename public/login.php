@@ -10,6 +10,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<script src="js/preventSafari.js"></script>
 	<title>Log in</title>
 </head>
 <body>
@@ -22,6 +24,7 @@
 			<input type="email" name="email" class="login__input" placeholder="Email" required>
 			<input type="password" name="password" class="login__input" placeholder="Password" required>
 			<button type="submit" class="login__input login__input--button">Log in</button>
+			<button type="button" class="login__input login__input--button" onclick="location.href = 'Gym.mobileconfig';"><i class="material-icons">get_app</i></button>
 			<?php 
 				if (!empty($_GET['error'])) {
 					echo '<div class="login__error">';
@@ -30,9 +33,6 @@
 					}
 					if ($error == 'password') {
 						echo 'Wrong password';
-					}
-					if ($error == 'session') {
-						echo 'Session error';
 					}
 					echo '</div>';
 				}

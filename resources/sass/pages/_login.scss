@@ -14,11 +14,11 @@
 		flex-direction: column;
 
 		&--photo {
-			height: 40%;
+			height: 30%;
 		}
 
 		&--inputs {
-			height: 60%;
+			height: 70%;
 			justify-content: flex-start;
 			align-items: center;
 		}
@@ -27,12 +27,12 @@
 	&__photo {
 		background-image: url('../images/muscle.png');
 		background-repeat: no-repeat;
-		background-size: 170px;
+		background-size: 130px;
 		background-position: 40px 15px;
 		border-radius: 5px;
 		margin: auto;
-		width: 220px;
-		height: 200px;
+		width: 180px;
+		height: 160px;
 		display: flex;
 		justify-content: center;
 		align-items: center;

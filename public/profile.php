@@ -10,13 +10,22 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<script src="js/preventSafari.js"></script>
 	<title>Profile</title>
 </head>
 <body>
 	<div class="profile">
-		<div class="profile__header">
-			<a href="index.php"><i class="material-icons profile__icon">chevron_left</i></a>
-			<div class="profile__title">PROFILE</div>
+		<div class="page__head">
+			<a href="index.php">
+				<i class="material-icons page__icon">chevron_left</i>
+			</a>
+			<div class="page__title">
+				Profile
+			</div>
+			<a href="logout.php">
+				<i class="material-icons page__icon">exit_to_app</i>
+			</a>
 		</div>
 		<div class="profile__info">
 			<div class="profile__block">

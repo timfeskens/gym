@@ -12,7 +12,7 @@
 		font-size: 1.5rem;
 		font-weight: $light;
 		text-transform: uppercase;
-		margin: 20px 0 0;
+		margin: 15px 0 0;
 	}
 
 	&__form {
@@ -25,14 +25,51 @@
 		margin: 5px;
 	}
 
+	&__sets {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: calc(100% - 10px);
+		background-color: $white;
+		border-radius: 5px;
+		margin: 0 10px;
+	}
+	
 	&__input {
 		width: calc(100% - 80px);
 		border: 1px solid $blue;
+		border-radius: 5px;
 		font-size: 1.3rem;
 		font-weight: $light;
 		text-transform: uppercase;
 		outline: none;
 		margin: 10px 0;
+		text-align: center;
+
+		&--set {
+			width: calc(50% - 25px);
+			margin: 5px 0;
+		}
+	}
+
+	&__input-holder {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		width: calc(100% - 50px);
+	}
+
+	&__input-button {
+		width: calc(100% - 58px);
+		margin: 5px 0;
+		padding: 5px 0;
+		border: 1px solid $blue;
+		border-radius: 5px;
+		font-size: 1.3rem;
+		font-weight: $light;
+		color: $blue;
+		text-transform: uppercase;
+		outline: none;
 		text-align: center;
 	}
 	

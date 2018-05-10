@@ -1,9 +1,15 @@
 <?php 
 	require 'require_session.php'; 
 	$bodypart_id = filter_var($_GET['id'], FILTER_SANITIZE_NUMBER_INT);
+	$exerciseID = filter_var($_GET['exerciseid'], FILTER_SANITIZE_NUMBER_INT);
 
 	$result = mysqli_query($mysqli, "SELECT * FROM bodyparts WHERE id = '$bodypart_id'");
 	$row =  mysqli_fetch_array($result);
+
+	$resultExercises = mysqli_query($mysqli, "SELECT * FROM exercises WHERE id = '$exerciseID'");
+	$rowExercises =  mysqli_fetch_array($resultExercises);
+
+	$resultUserExercises = mysqli_query($mysqli, "SELECT * FROM user_exercises WHERE user_id = '$userID' AND exercise_id = '$exerciseID' ");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,19 +29,38 @@
 				<i class="material-icons page__icon">chevron_left</i>
 			</a>
 			<div class="page__title">
-				add exercise
+				edit exercise
 			</div>
 			<a href="logout.php">
 				<i class="material-icons page__icon">exit_to_app</i>
 			</a>
 		</div>
-		<form action="addexercise_send.php?id=<?= $bodypart_id ?>" method="post" class="addexercise__form">
+		<form action="editexercise_send.php?id=<?= $bodypart_id ?>" method="post" class="addexercise__form">
+			<input type="hidden" name="exerciseid" value="<?= $rowExercises['id']; ?>" required>
 			<div class="addexercise__title">exercise name</div>
-			<input type="text" name="name" class="addexercise__input" required>
+			<input type="text" name="name" class="addexercise__input" value="<?= $rowExercises['name']; ?>" required>
 			<div class="addexercise__title">exercise group</div>
 			<input type="text" class="addexercise__input" value="<?= $row['name']; ?>" readonly required>
 			<div class="addexercise__title">sets</div>
-			<div class="addexercise__sets"></div>
+			<div class="addexercise__sets">
+				<?php 
+					if ($resultUserExercises) {
+						while ($rowUserExercises =  mysqli_fetch_array($resultUserExercises)) {
+							$setID = $rowUserExercises['set_id'];
+							$resultSets = mysqli_query($mysqli, "SELECT * FROM sets WHERE id = '$setID'");
+							while ($rowSets =  mysqli_fetch_array($resultSets)) {
+				?>
+					<div class="addexercise__input-holder">
+						<input type="hidden"  name="setid[]" value="<?= $rowSets['id'] ?>" >
+						<input type="number" name="reps[]" value="<?= $rowSets['reps'] ?>" class="addexercise__input addexercise__input--set">
+						<input type="text" name="weight[]" value="<?= $rowSets['weight'] ?>" class="addexercise__input addexercise__input--set">
+					</div>
+				<?php 
+							}
+						}
+					}
+				?>
+			</div>
 			<button type="button" class="addexercise__input-button"> add set </button>
 			<div class="addexercise__button-holder">
 				<a href="exercises.php?id=<?= $bodypart_id ?>">
@@ -59,6 +84,12 @@
 				formContainer.appendChild(inputSetHolder);
 				
 				if ( inputSetHolder ) {
+					let inputHidden = document.createElement( 'input' );
+					inputHidden.type = 'hidden';
+					inputHidden.value = formContainer.childElementCount;
+					inputHidden.name = 'setid[]';
+					inputSetHolder.appendChild(inputHidden);
+
 					let inputSet = document.createElement( 'input' );
 					inputSet.type = 'number';
 					inputSet.pattern = '[0-9]*'
