@@ -1,6 +1,10 @@
 <?php 
 	require 'require_session.php'; 
-	$result = mysqli_query($mysqli, "SELECT * FROM profiles");
+	$resultUser = mysqli_query($mysqli, "SELECT * FROM users WHERE id = '$userID'");
+	$rowUser = mysqli_fetch_array($resultUser);
+
+	$profileID = $rowUser['profile_id'];
+	$result = mysqli_query($mysqli, "SELECT * FROM profiles WHERE id = '$profileID' ");
 	$row = mysqli_fetch_array($result);
 ?>
 <!DOCTYPE html>

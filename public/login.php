@@ -21,7 +21,7 @@
 			</div>
 		</div>
 		<form action="login_send.php" method="post" class="login__block login__block--inputs">
-			<input type="email" name="email" class="login__input" placeholder="Email" required>
+			<input type="text" name="email" class="login__input" placeholder="Email" required>
 			<input type="password" name="password" class="login__input" placeholder="Password" required>
 			<button type="submit" class="login__input login__input--button">Log in</button>
 			<button type="button" class="login__input login__input--button" onclick="location.href = 'Gym.mobileconfig';"><i class="material-icons">get_app</i></button>
