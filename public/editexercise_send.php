@@ -61,10 +61,7 @@
 
 						$resultUserExercises = mysqli_query($mysqli, "INSERT INTO user_exercises (user_id, exercise_id, set_id) VALUES ('$userID', '$exerciseID', '$newSetID')");
 
-						if ( $resultUserExercises ) {
-							header('location: exercises.php?id=' . $bodypart_id);
-							exit;
-						} else {
+						if ( !$resultUserExercises ){
 							echo '<br>' . mysqli_error($mysqli) . '<br>';
 							// echo '<br> rep: ' . $exerciseRep[$i];
 							// echo '<br> weight: ' . $exerciseWeight[$i] . '<br>';
@@ -87,5 +84,7 @@
 				header('location: editexercise.php?id=' . $bodypart_id . '&exerciseid=' . $exerciseID . 'error=id');
 				exit;
 			}
-		}
+		} 
+		header('location: exercises.php?id=' . $bodypart_id);
+		exit;
 	}
